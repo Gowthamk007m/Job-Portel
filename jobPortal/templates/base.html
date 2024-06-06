@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}Job Portel{% endblock %}</title>
 </head>
 <body>
-    {% block content %}
+    <header>
+        {% include 'partials/navbar.html' %}
+    </header>
 
-    {% endblock %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% include 'partials/footer.html' %}
+    </footer>
 </body>
 </html>
