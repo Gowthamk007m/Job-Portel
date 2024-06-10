@@ -9,7 +9,7 @@ class AboutView(TemplateView):
 class ContactView(TemplateView):
     template_name = 'pages/contact.html'
 
-
+#----------------------ADMIN DASHBOARD-----------------------------
 
 class AdminHome(TemplateView):
     template_name = 'admin-dashboard/admin-home.html'
@@ -40,3 +40,19 @@ class AdminHome(TemplateView):
 
 class AdminCompanyDash(TemplateView):
     template_name = 'admin-dashboard/companies.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['postings'] = [
+            {
+                'name': 'TCS',
+                'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiNqXWRkKc_N18u1Nm666PBQk3cDmKgeMm5g&s',
+                'email': 'TCS@gmail.com',
+                'jobs': '6354',
+                'open': '213',
+                'joined': '5/07/2018',
+            }
+        ] * 8
+        
+        return context
