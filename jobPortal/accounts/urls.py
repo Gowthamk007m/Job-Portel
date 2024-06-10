@@ -1,8 +1,12 @@
 from django.urls import path
-from . import views
+from .views import *
+
+app_name = 'accounts'  # Define the app name for namespacing
 
 urlpatterns = [
-    path('register/', views.register_view, name='register'), 
-    path('login/', views.login_view, name='login'),
-    path('forgot_password/', views.forgot_view, name='forgot_password'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('forgot-password/', ForgotPasswordView.as_view(), name='forgot_password'),
+    
+    
 ]

@@ -1,8 +1,15 @@
 from django.urls import path
-from . import views
+from .views import *
+
+app_name = 'core'  # Define the app name for namespacing
 
 urlpatterns = [
-    path('', views.home_view, name='home'), 
-    path('about/', views.about_view, name='about'),
-    path('contact/', views.contact_view, name='contact'),
+    path('', HomeView.as_view(), name='home'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    
+    path('admin-home/', AdminHome.as_view(), name='admin-home'),
+    path('admin-company/', AdminCompanyDash.as_view(), name='admin-company'),
+    
+    
 ]

@@ -1,13 +1,11 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+class RegisterView(TemplateView):
+    template_name = 'auth/register.html'
 
-# Create your views here.
-def register_view(request):
-    return render(request,'auth/register.html')
+class LoginView(TemplateView):
+    template_name = 'auth/login.html'
 
-def login_view(request):
-    return render(request, 'auth/login.html')
+class ForgotPasswordView(TemplateView):
+    template_name = 'auth/forgot_password.html'
 
-def forgot_view(request):
-    return render(request, 'auth/forgot_password.html')

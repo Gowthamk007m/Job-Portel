@@ -15,17 +15,20 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"/>
 
-    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 
     {% block extra_styles %}{% endblock %}
     
   </head>
 
   <body>
+    <div class="wrapper">
     <header>{% include 'partials/navbar.html' %}</header>
 
     <main>{% block content %} {% endblock %}</main>
 
-    <footer>{% include 'partials/footer.html' %}</footer>
+    <footer>{% include 'partials/footer.html' %}</footer> 
+  </div>
   </body>
 </html>
