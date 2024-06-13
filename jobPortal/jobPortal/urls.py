@@ -23,7 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(('core.urls','core'),namespace='core')),
     path('accounts/',include(('accounts.urls','accounts'),namespace='accounts')),
-    
+    path('users/', include('users.urls', namespace='users')),
+    path('employers/', include('employers.urls', namespace='employers')),
+    path('dashboard/', include('admin_dashboard.urls', namespace='admin_dashboard')),   
 ]
 
 if settings.DEBUG:

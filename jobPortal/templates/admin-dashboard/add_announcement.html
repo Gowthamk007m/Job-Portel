@@ -1,0 +1,104 @@
+{% extends "admin-dashboard/admin-home.html" %}
+
+
+{% block content %}
+<main class="main-content position-relative border-radius-lg ">
+
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Admin</a></li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Add Announcements</li>
+          </ol>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+       
+     
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid py-4 ">
+        <div class="row  d-flex justify-content-center">
+
+
+<div class="col-md-8">
+    <div class="card border-2 shadow shadow-lg">
+        <div class="card-header pb-0">
+            <div class="d-flex align-items-center">
+                <p class="mb-0">Create Announcement</p>
+                <button class="btn btn-primary btn-sm ms-auto">Save Draft</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <form id="announcementForm">
+                <p class="text-uppercase text-sm">Announcement Details</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="title" class="form-control-label">Announcement Title</label>
+                            <input class="form-control" type="text" id="title" name="title" required maxlength="100">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="description" class="form-control-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="category" class="form-control-label">Category</label>
+                            <select class="form-control" id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="update">Update</option>
+                                <option value="job_posting">Job Posting</option>
+                                <option value="event">Event</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="audience" class="form-control-label">Target Audience</label>
+                            <select class="form-control" id="audience" name="audience" required>
+                                <option value="">Select Audience</option>
+                                <option value="job_seekers">Job Seekers</option>
+                                <option value="employers">Employers</option>
+                                <option value="all_users">All Users</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">Additional Information</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="announcement_date" class="form-control-label">Announcement Date</label>
+                            <input class="form-control" type="date" id="announcement_date" name="announcement_date" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="visibility" class="form-control-label">Visibility</label>
+                            <select class="form-control" id="visibility" name="visibility" required>
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Publish</button>
+                    <button type="reset" class="btn btn-secondary ml-2">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+        </div></div>
+</main>
+
+{% endblock %}

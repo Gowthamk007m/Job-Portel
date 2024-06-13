@@ -1,0 +1,192 @@
+{% extends "admin-dashboard/admin-home.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<main class="main-content position-relative border-radius-lg ">
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Admin</a></li>
+          <li class="breadcrumb-item text-sm text-white active" aria-current="page">Company</li>
+        </ol>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+     
+   
+      </div>
+    </div>
+  </nav>
+<div class="container-fluid py-4 ">
+  <div class="row">
+    <div class="col-12">
+    
+      <div class="container-fluid py-4">
+        <div class="row">
+       
+          <div class="col-md-5 ">
+            <div class="card card-profile border border-2">
+              <img src="{% static 'assets/img/bg-profile.jpg' %}" alt="Image placeholder" class="card-img-top">
+              <div class="row justify-content-center">
+                <div class="col-4 col-lg-4 order-lg-2">
+                  <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
+                    <a href="javascript:;">
+                      <img src="{% static 'assets/img/team-2.jpg' %}" class="rounded-circle img-fluid border border-2 border-white">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+                <div class="d-flex justify-content-between">
+                  <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-none d-lg-block btn-danger">Action</a>
+                  <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-block d-lg-none"><i class="ni ni-collection"></i></a>
+                  <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block">Message</a>
+                  <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-block d-lg-none"><i class="ni ni-email-83"></i></a>
+                </div>
+              </div>
+              <div class="card-body pt-0">
+                <div class="row">
+                  <div class="col">
+                    <div class="d-flex justify-content-center">
+             
+                      <div class="d-grid text-center mx-4">
+                        <span class="text-lg font-weight-bolder">10</span>
+                        <span class="text-sm opacity-8">Applications</span>
+                      </div>
+              
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center mt-4">
+                  <h5>
+                    Mark Davis<span class="font-weight-light">, 35</span>
+                  </h5>
+                  <div class="h6 font-weight-300">
+                    <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                  </div>
+                  <div class="h6 mt-4">
+                    <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                  </div>
+                  <div>
+                    <i class="ni education_hat mr-2"></i>University of Computer Science
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+          
+          <div class="col-md-7">
+            <div class="card">
+              <div class="card-header pb-0">
+                <div class="d-flex align-items-center">
+                  <p class="mb-0">Profile Information</p>
+                  <button class="btn btn-primary btn-sm ms-auto">Settings</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="text-uppercase ">User Information</p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group ">
+                      <label class="form-control-label text-start ">Username</label>
+                      <p class="form-control-static text-capitalize ">lucky jesse</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Email address</label>
+                      <p class="form-control-static ">jesse@gmail.com</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">First name</label>
+                      <p class="form-control-static text-capitalize">Jesse</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Last name</label>
+                      <p class="form-control-static">Lucky</p>
+                    </div>
+                  </div>
+                </div>
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">Contact Information</p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label">Address</label>
+                      <p class="form-control-static">Bld Mihail Kogalniceanu</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label">City</label>
+                      <p class="form-control-static">New York</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label">Country</label>
+                      <p class="form-control-static">United States</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label">Postal code</label>
+                      <p class="form-control-static">437300</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Phone Number</label>
+                      <p class="form-control-static">(123) 456-7890</p>
+                    </div>
+                  </div>
+                </div>
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">Additional Information</p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Qualification</label>
+                      <p class="form-control-static">Bachelor of Science in Computer Science</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="form-control-label">Resume</label>
+                      <p class="form-control-static"><a href="resume_link.pdf" target="_blank">Download Resume</a></p>
+                    </div>
+                  </div>
+                </div>
+                <hr class="horizontal dark">
+                <p class="text-uppercase text-sm">About Me</p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="form-control-label">About Me</label>
+                      <p class="form-control-static">I am a hard-working and driven individual who isn't afraid to face a challenge. I'm passionate about my work and I know how to get the job done.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  
+  
+    </div>
+  </div>
+</div>
+
+
+</main>
+{% endblock %}
