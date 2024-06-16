@@ -11,7 +11,11 @@
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"/>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+
+
     {% block extra_styles %}{% endblock %}
   </head>
 
@@ -19,9 +23,15 @@
     <div class="wrapper">
     <header>{% include 'partials/navbar.html' %}</header>
 
-    <main>{% block content %} {% endblock %}</main>
+    <main class="min-vh">{% block content %} {% endblock %}</main>
 
-    <footer>{% include 'partials/footer.html' %}</footer> 
+    <footer class="bg-white">{% include 'partials/footer.html' %}</footer> 
   </div>
+
+  {% block extra_script %}{% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

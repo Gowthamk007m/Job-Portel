@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}Complete Profile{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .fixed-height-accordion {
+        min-height: 500px;
+        max-height: 500px; /* Ensure a fixed max height for better scrolling */
+        overflow-y: auto;
+    }
+    .card-header button {
+        text-decoration: none;
+        font-weight: bold;
+        color: #007bff;
+    }
+    .card-header button:hover {
+        color: #0056b3;
+    }
+    .card {
+        margin-bottom: 1rem;
+        border: none;
+    }
+    .card-header {
+        background-color: #f8f9fa;
+    }
+    .card-body {
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-top: none;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8 border border-primary rounded-3 shadow">
+            <h4 class="text-center text-body-secondary mt-3 border-bottom pb-2">Complete Your Profile</h4>
+            <div class="fixed-height-accordion">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div id="accordion">
+                        <!-- Profile Information -->
+                        <div class="card">
+                            <div class="card-header" id="headingProfileInfo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseProfileInfo" aria-expanded="true">
+                                        Profile Information
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseProfileInfo" class="collapse show" aria-labelledby="headingProfileInfo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="fullName">Full Name</label>
+                                        <input type="text" class="form-control" id="fullName" name="full_name" required>
+                                    </div>
+                                    <div class="form-group p-2 mt-2">
+                                        <label for="profilePicture">Profile Picture (optional)</label>
+                                        <input type="file" class="form-control-file" id="profilePicture" name="profile_picture">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Professional Details -->
+                        <div class="card">
+                            <div class="card-header" id="headingProfessionalDetails">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseProfessionalDetails" aria-expanded="false" aria-controls="collapseProfessionalDetails">
+                                        Professional Details
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseProfessionalDetails" class="collapse" aria-labelledby="headingProfessionalDetails" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="currentJobTitle">Current Job Title</label>
+                                        <input type="text" class="form-control" id="currentJobTitle" name="current_job_title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="yearsExperience">Total Years of Experience</label>
+                                        <input type="number" class="form-control" id="yearsExperience" name="years_experience" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="keySkills">Key Skills</label>
+                                        <input type="text" class="form-control" id="keySkills" name="key_skills" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Job Preferences -->
+                        <div class="card">
+                            <div class="card-header" id="headingJobPreferences">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseJobPreferences" aria-expanded="false" aria-controls="collapseJobPreferences">
+                                        Job Preferences
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseJobPreferences" class="collapse" aria-labelledby="headingJobPreferences" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="desiredJobTitle">Desired Job Title(s)</label>
+                                        <input type="text" class="form-control" id="desiredJobTitle" name="desired_job_title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jobType">Preferred Job Type</label>
+                                        <select class="form-control" id="jobType" name="job_type" required>
+                                            <option>Full-time</option>
+                                            <option>Part-time</option>
+                                            <option>Contract</option>
+                                            <option>Freelance</option>
+                                            <option>Internship</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="preferredLocation">Preferred Location(s)</label>
+                                        <input type="text" class="form-control" id="preferredLocation" name="preferred_location" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="desiredSalary">Desired Salary Range</label>
+                                        <input type="text" class="form-control" id="desiredSalary" name="desired_salary" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Resume Upload -->
+                        <div class="card">
+                            <div class="card-header" id="headingResumeUpload">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseResumeUpload" aria-expanded="false" aria-controls="collapseResumeUpload">
+                                        Resume Upload
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseResumeUpload" class="collapse" aria-labelledby="headingResumeUpload" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="resumeUpload">Upload Resume</label>
+                                        <input type="file" class="form-control-file" id="resumeUpload" name="resume" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4 d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Complete Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_script %}
+<script>
+    $(function() {
+        $("#accordion").accordion({
+            header: "> div > div.card-header",
+            heightStyle: "content"
+        }).sortable({
+            axis: "y",
+            handle: ".card-header",
+            stop: function(event, ui) {
+                ui.item.children(".card-header").triggerHandler("focusout");
+                $(this).accordion("refresh");
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% endblock %}
