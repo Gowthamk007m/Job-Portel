@@ -1,0 +1,24 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-4 border border-primary rounded-3 shadow">
+        <h4 class="text-center text-body-secondary mt-3 border-bottom pb-2">
+          Verify
+        </h4>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Verify OTP</button>
+</form>
+      </div>
+      </div>
+</div>
+
+{% endblock %} 
