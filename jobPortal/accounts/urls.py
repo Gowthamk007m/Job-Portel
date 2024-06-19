@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from .views import *
 
 app_name = 'accounts' 
@@ -9,4 +9,8 @@ urlpatterns = [
     path('forgot-password/', ForgotPasswordView.as_view(), name='forgot_password'),
     path('otp-verify/', OTPVerifyView.as_view(), name='otp_verify'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    
+    # path('password-reset/', CustomPasswordResetView.as_view(), name='password_reset'),
+    # path('password-reset/done/', CustomPasswordResetDoneView.as_view(), name='password_reset_done'),
+    # path('', include('django.contrib.auth.urls')),
 ]

@@ -25,7 +25,8 @@ urlpatterns = [
     path('accounts/',include(('accounts.urls','accounts'),namespace='accounts')),
     path('users/', include('users.urls', namespace='users')),
     path('employers/', include('employers.urls', namespace='employers')),
-    path('administrator/', include('admin_dashboard.urls', namespace='admin_dashboard')),   
+    path('administrator/', include('admin_dashboard.urls', namespace='admin_dashboard')),  
+     
 ]
 
 if settings.DEBUG:

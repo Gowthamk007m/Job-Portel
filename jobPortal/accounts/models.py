@@ -21,3 +21,4 @@ class CustomUser(AbstractUser):
     def generate_otp(self):
         self.otp = '{:06}'.format(random.randint(0, 999999))
         self.save()
+
