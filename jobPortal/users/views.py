@@ -4,6 +4,8 @@ from django.views.generic import TemplateView
 class UserProfileForm(TemplateView):
     template_name = 'users/complete-profile.html'
     
+
+    
 class UserHome(TemplateView):
     template_name = 'users/user-home.html'
     
