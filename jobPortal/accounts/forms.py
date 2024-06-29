@@ -1,46 +1,10 @@
-from django.forms import ModelForm
+from django.forms import CharField, ModelForm, PasswordInput, TextInput,Form,Select,CheckboxInput
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import TextInput, PasswordInput, CharField
-from django.core.validators import MinLengthValidator
 from .models import *
-from django.contrib.auth import password_validation
 
-class UserCreation(UserCreationForm):
-    class Meta:
-        model = CustomUser
-        fields = ['email', 'password1', 'password2']
-        widgets = {
-            'email': TextInput({
-            'class': 'form-control mt-4' ,
-            'type':'email',
-            'id':'Email1',
-            'aria-describedby':'emailHelp',
-            'placeholder':'Enter email'
-            }),
-            'password1': PasswordInput({
-                'class': 'form-control mt-4',
-                'placeholder':'Enter Password'
-            }),
-               'password2': PasswordInput({
-                'class': 'form-control mt-4',
-                'placeholder':'Enter Password'
-            }),
-        }   
-    def clean_password2(self):
-        password1 = self.cleaned_data.get('password1')
-        password2 = self.cleaned_data.get('password2')
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords do not match")
-        password_validation.validate_password(password2, self.instance)
-        return password2
-    
-    
-class UsersignUpForm(forms.ModelForm):
-    """
-    A form that creates a user, with no privileges, from the given username and
-    password.
-    """
+
+class CustomUserCreationForm(UserCreationForm):
     error_messages = {
         'password_mismatch': ("The two password fields didn't match."),
     }
@@ -60,8 +24,9 @@ class UsersignUpForm(forms.ModelForm):
             'type':'email',
             'id':'Email1',
             'aria-describedby':'emailHelp',
-            'placeholder':'Enter email'
-            })}
+            'placeholder':'Enter email',
+            'required': 'required'
+        })}
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -79,5 +44,70 @@ class UsersignUpForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+        
+class LoginForm(Form):
+     email = CharField(
+        max_length = 50,
+        min_length = 10,
+        required = True,
+        label = 'email',
+        widget = TextInput({
+            'class': 'form-control mt-4',
+            'type':'email',
+            'id':'Email1',
+            'aria-describedby':'emailHelp',
+            'placeholder':'Enter email',
+            'required': 'required'
+        })
+    )
+
+     password = CharField(
+        max_length = 15,
+        min_length = 4,
+        required = True,
+        label = 'Password',
+        widget=forms.PasswordInput(attrs={'placeholder':'Password','class':'form-control mt-4'}),)
     
-    
+class AddressCreateForm(ModelForm):
+    class Meta:
+        model = Address
+        exclude = ['user']
+        widgets = {
+            'name': TextInput({
+                'class': 'form-control'
+            }),
+
+            'address_line_1': TextInput({
+                'class': 'form-control'
+            }),
+
+            'address_line_2': TextInput({
+                'class': 'form-control'
+            }),
+
+            'address_line_3': TextInput({
+                'class': 'form-control'
+            }),
+
+            'city': TextInput({
+                'class': 'form-control'
+            }),
+
+            'state': TextInput({
+                'class': 'form-control'
+            }),
+
+            'pincode': TextInput({
+                'class': 'form-control'
+            }),
+
+            'country': Select({
+                'class': 'form-control'
+            }),
+
+            'phone': TextInput({
+                'class': 'form-control'
+            }),
+
+            'is_default': CheckboxInput(),
+        }   

@@ -12,8 +12,8 @@ display: none;
 
 {% block content %}
 
-<div class="p-1" style="background-color: rgb(255, 255, 255); max-height: 500px;">
-    <div class="container  wow fadeIn mt-4 rounded-4 border mb-2" data-wow-delay="0.1s" style="padding: 20px;">
+<div class="p-1 " style="background-color: rgb(255, 255, 255); max-height: 500px; ">
+    <div class="container  wow fadeIn mt-4 rounded-4 border mb-2 " data-wow-delay="0.1s" style="padding: 20px;">
         <div class="container  p-1 ">
             <div class="row g-4 ">
                 <div class="col-md-10">
@@ -37,12 +37,7 @@ display: none;
                         </div>
                         <div class="col-md-4">
                             <div class="shadow">
-                                <select class="form-select border-0">
-                                    <option selected>Location</option>
-                                    <option value="1">Location 1</option>
-                                    <option value="2">Location 2</option>
-                                    <option value="3">Location 3</option>
-                                </select>
+                                    <input class="form-control border-0" type="text" name="location" placeholder="Location" id="">
                             </div>
 
 
@@ -61,10 +56,10 @@ display: none;
 
     <!-- Jobs Start -->
     <div class="container  py-2  rounded-4 ">
-        <div class="container  sticky-top">
+        <div class="container  ">
             <h4 class="text-center mb-2 wow fadeInUp  text-primary " data-wow-delay="0.1s">Jobs for you</h4>
             <hr>
-                <div class="row ">
+                <div class="row border">
                     <div class="tab-class text-center wow fadeInUp col-5" data-wow-delay="0.3s">
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane fade show p-0 active ">
@@ -389,13 +384,13 @@ display: none;
                         </div>
                     </div>
 
-                    <div class=" rounded shadow py-0 wow fadeInUp bg-white border col-7  sticky-top mb-4 pt-2 pb-3" data-wow-delay="0.1s" style="height: fit-content;">
-                        <div class="container  mb-4" style="height: 90vh; overflow-y: scroll;padding: 0; overflow-x: hidden;">
+                    <div class=" rounded shadow py-0 wow fadeInUp bg-white border col-7  sticky-top mb-1 pt-4 pb-1" data-wow-delay="0.1s" style="height: fit-content;">
+                        <div class="container  " style="height: 95vh; overflow-y: scroll;padding: 0; overflow-x: hidden;padding: 10px;padding-top:0px ;padding-bottom: 0px;">
                             <div class="row gy-5 gx-4 ">
-                                <div class="col-lg-12">
-                                    <div class="d-flex align-items-center mb-2  sticky-top bg-light shadow border-b  ">
+                                <div class="col-lg-12 ">
+                                    <div class="d-flex align-items-center mb-2  sticky-top bg-light shadow border-b ">
                                         <img class="flex-shrink-0 img-fluid border rounded" src="https://img.freepik.com/premium-vector/free-vector-company-logo-set-design-ideas_490098-487.jpg"
-                                            alt="" style="width: 80px; height: 80px;">
+                                            alt="" style="width: 80px; height: 100px;">
                                         <div class="text-start ps-4">
                                             <h3 class="mb-3">Marketing Manager</h3>
                                             <span class="text-truncate me-3"><i
@@ -412,7 +407,7 @@ display: none;
                                         </div>
                                     </div>
 
-                                    <div class="mb-5 col-lg-10">
+                                    <div class="mb-5 col-lg-10 p-4" >
                                         <h4 class="mb-3">Job description</h4>
                                         <p>Dolor justo tempor duo ipsum accusam rebum gubergren erat. Elitr stet dolor
                                             vero clita labore gubergren. Kasd sed ipsum elitr clita rebum ut sea diam
@@ -473,7 +468,7 @@ display: none;
 
 
                                     
-                                        <div class="form-group mt-4 d-grid gap-0 sticky-bottom p-1 shadow border-b bg-white">
+                                        <div class="form-group mt-4 d-grid gap-0 sticky-bottom p-1  border-b bg-white">
                                             <button type="submit" class="btn btn-primary">Apply</button>
                                           </div>
                                             

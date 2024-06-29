@@ -119,3 +119,20 @@ footer {
       margin-left: -15rem;
     }
   }
+
+  /* Example to override scrollbar in Chrome */
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b4b5bf; /* Thumb color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Thumb color on hover */
+}

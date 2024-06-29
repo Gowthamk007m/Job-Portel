@@ -1,25 +1,13 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
-from .models import CustomUser
-# Register your models here.
-class UserAdmin(DjangoUserAdmin):
-    """Define admin model for custom User model with no email field."""
+from django.contrib.auth.admin import UserAdmin
 
-    fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        (('Personal info'), {'fields': ('first_name', 'last_name')}),
-        (('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
-                                       'groups', 'user_permissions')}),
-        (('Important dates'), {'fields': ('last_login', 'date_joined')}),
-    )
-    add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2'),
-        }),
-    )
-    list_display = ('email', 'first_name', 'last_name', 'is_staff')
-    search_fields = ('email', 'first_name', 'last_name')
-    ordering = ('email',)
+from .forms import CustomUserCreationForm
+from .models import CustomUser,Address
 
-admin.site.register(CustomUser,UserAdmin)
+class CustomUserAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    model = CustomUser
+    list_display = ["email", "username",]
+
+admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Address)
