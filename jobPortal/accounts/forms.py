@@ -112,16 +112,16 @@ class AddressCreateForm(ModelForm):
             'is_default': CheckboxInput(),
         }   
 
-class UserDetailsForm(ModelForm):
-    hobbies = forms.ModelMultipleChoiceField(
-        queryset=Hobby.objects.all(),
-        required=True
-    )
-
+class UserActivitiesForm(ModelForm):
     class Meta:
-        model = UserHobby
-        fields = ['hobbies']
+        model = UserActivity
+        exclude = ['user']
 
-    def __init__(self, *args, **kwargs):
-        super(UserDetailsForm, self).__init__(*args, **kwargs)
-        self.fields['hobbies'].queryset = Hobby.objects.all()
+    # def __init__(self, *args, **kwargs):
+    #     super(UserActivity, self).__init__(*args, **kwargs)
+    #     self.fields['hobbies'].queryset = Hobby.objects.all()
+    #     self.fields['interests'].queryset = Interest.objects.all()
+
+class UserQualificationsForm(ModelForm):
+    class Meta:
+        models = UserQualifications

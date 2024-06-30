@@ -88,15 +88,7 @@ class Hobby(models.Model):
 
     def __str__(self):
         return self.name
-
-
-class UserHobby(models.Model):
-    user = models.ForeignKey(CustomUser, related_name='user_hobbies', on_delete=models.CASCADE)
-    hobbies = models.ManyToManyField(Hobby, related_name='user_hobbies')
-
-    def __str__(self):
-        return self.user.username
-
+    
 class Interest(models.Model):
     INTEREST_CHOICES = (
         ('Technology', 'Technology'),
@@ -121,32 +113,35 @@ class Interest(models.Model):
     def __str__(self):
         return self.name
 
-        # class Interest(models.Model):
-        #     INTEREST_CHOICES = (
-        #         ('Technology', 'Technology'),
-        #         ('Music', 'Music'),
-        #         ('Art', 'Art'),
-        #         ('Science', 'Science'),
-        #     )
+class UserActivity(models.Model):
+    user = models.ForeignKey(CustomUser, related_name='user_activities', on_delete=models.CASCADE)
+    hobbies = models.ManyToManyField(Hobby, related_name='user_activities')
+    Interest = models.ManyToManyField(Interest, related_name='user_activities')
+    smoking_habit = models.BooleanField(default=False)
+    drinking_habit = models.BooleanField(default=False)
 
-        #     name = models.CharField(max_length=100, choices=INTEREST_CHOICES, unique=True)
 
-        #     def __str__(self):
-        #         return self.name
+    def __str__(self):
+        return self.user.username
 
-        # class UserInterest(models.Model):
-        #     user = models.ForeignKey(CustomUser, related_name='user_interests', on_delete=models.CASCADE)
-        #     interest = models.ForeignKey(Interest, related_name='user_interests', on_delete=models.CASCADE)
 
-        #     class Meta:
-        #         unique_together = ('user', 'interest')
+class UserQualifications(models.Model):
+    LEVEL_CHOICES = (
+        ('High School', 'High School'),
+        ('Diploma', 'Diploma'),
+        ('Undergraduate', 'Undergraduate'),
+        ('Graduate', 'Graduate'),
+        ('Postgraduate', 'Postgraduate'),
+        ('PhD', 'PhD'),
+        ('Other', 'Other'),
+    )
 
-        #     def __str__(self):
-        #         return f"{self.user.email} - {self.interest.name}"
+    user = models.ForeignKey(CustomUser, related_name='user_qualifications', on_delete=models.CASCADE)
+    level = models.CharField(max_length=20, choices=LEVEL_CHOICES)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    course = models.CharField(max_length=100)
+    institution = models.CharField(max_length=100)
 
-        # class UserImage(models.Model):
-        #     user = models.ForeignKey(CustomUser, related_name='images', on_delete=models.CASCADE)
-        #     image = models.ImageField(upload_to='user_images/')
-
-        #     def __str__(self):
-        #         return self.image.url
+    def __str__(self):
+        return f"{self.level} at {self.institution}"
