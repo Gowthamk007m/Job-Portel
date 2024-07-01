@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login
 
 from .models import *
-from .forms import CustomUserCreationForm, LoginForm,UserActivitiesForm
+from .forms import CustomUserCreationForm, LoginForm,ActivitiesForm,QualificationsForm
 from django.contrib import messages
 from django.views.generic import CreateView,UpdateView
 from django.views import View
@@ -52,8 +52,18 @@ class LogoutView(View):
 
 
 
-class UserActivitiesCreateView(LoginRequiredMixin, CreateView):
-    form_class = UserActivitiesForm
+
+class DeatilsCreateView(LoginRequiredMixin, CreateView):
+    form_class = ActivitiesForm
+    template_name = 'users/complete_profile.html'
+    success_url = reverse_lazy('users:jobs')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class ActivitiesCreateView(LoginRequiredMixin, CreateView):
+    form_class = ActivitiesForm
     template_name = 'users/user_activities.html'
     success_url = reverse_lazy('users:jobs')
 
@@ -61,6 +71,16 @@ class UserActivitiesCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
+class QualificationsCreateView(LoginRequiredMixin, CreateView):
+    form_class = QualificationsForm
+    template_name = 'users/user_qualifications.html'
+    success_url = reverse_lazy('users:jobs')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+
 # class UserHobbyUpdateView(UpdateView):
 #     model = UserHobby
 #     form_class = UserHobbyForm

@@ -67,7 +67,15 @@ class LoginForm(Form):
         required = True,
         label = 'Password',
         widget=forms.PasswordInput(attrs={'placeholder':'Password','class':'form-control mt-4'}),)
+
+
+class DeatilsForm(ModelForm):
+    class Meta:
+        model = CustomUser
+        exclude = ['email',]
     
+
+
 class AddressCreateForm(ModelForm):
     class Meta:
         model = Address
@@ -112,7 +120,8 @@ class AddressCreateForm(ModelForm):
             'is_default': CheckboxInput(),
         }   
 
-class UserActivitiesForm(ModelForm):
+
+class ActivitiesForm(ModelForm):
     class Meta:
         model = UserActivity
         exclude = ['user']
@@ -122,6 +131,18 @@ class UserActivitiesForm(ModelForm):
     #     self.fields['hobbies'].queryset = Hobby.objects.all()
     #     self.fields['interests'].queryset = Interest.objects.all()
 
-class UserQualificationsForm(ModelForm):
+class QualificationsForm(ModelForm):
     class Meta:
-        models = UserQualifications
+        model = UserQualifications
+        exclude = ["user"]
+        
+    def clean(self):
+        cleaned_data = super().clean()
+        start_date = cleaned_data.get('start_date')
+        end_date = cleaned_data.get('end_date')
+
+        if start_date and end_date:
+            if start_date >= end_date:
+                raise forms.ValidationError("Start date must be earlier than end date.")
+
+        return cleaned_data
